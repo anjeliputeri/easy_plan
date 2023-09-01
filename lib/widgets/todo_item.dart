@@ -28,7 +28,7 @@ final onDeleteItem;
           borderRadius: BorderRadius.circular(20)
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        tileColor: Colors.white,
+        tileColor: const Color(0xff1B1B1D),
         leading: Icon(
           todo.isDone ? Icons.check_box:Icons.check_box_outline_blank,
           color: tdBlue,),
@@ -36,8 +36,9 @@ final onDeleteItem;
           todo.todoText!, 
           style: TextStyle(
             fontSize: 16, 
-            color: tdBlack,
+            color: Colors.white,
             decoration: todo.isDone? TextDecoration.lineThrough: null,
+            decorationColor: Colors.white
           ),
             ),
             trailing: Container(

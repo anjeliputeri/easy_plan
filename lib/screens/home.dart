@@ -46,9 +46,10 @@ class _HomeState extends State<Home> {
                           bottom: 20,
                         ),
                         child: const Text(
-                          'All ToDos',
+                          'Your Plan',
                           style: TextStyle(
                             fontSize: 30,
+                            color: Colors.white,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -80,22 +81,25 @@ class _HomeState extends State<Home> {
                     vertical: 5,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: const Color(0xff1B1B1D),
                     boxShadow: const [
                       BoxShadow(
-                        color: Colors.grey,
+                        color: tdBGColor,
                         offset: Offset(0.0, 0.0),
                         blurRadius: 10.0,
                         spreadRadius: 0.0,
                       ),
                     ],
                     borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: tdGrey)
                   ),
                   child: TextField(
                     controller: _todoController,
                     decoration: const InputDecoration(
                         hintText: 'Add a new todo item',
+                        hintStyle: TextStyle(color: Colors.white),
                         border: InputBorder.none),
+                        style: const TextStyle(color: Colors.white),
                   ),
                 ),
               ),
@@ -117,7 +121,7 @@ class _HomeState extends State<Home> {
                     '+',
                     style: TextStyle(
                       fontSize: 40,
-                      color: Colors.white
+                      color: tdBGColor
                     ),
                   ),
                 ),
@@ -172,7 +176,7 @@ class _HomeState extends State<Home> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color(0xff1B1B1D),
         borderRadius: BorderRadius.circular(20),
       ),
       child: TextField(
@@ -181,7 +185,7 @@ class _HomeState extends State<Home> {
           contentPadding: EdgeInsets.all(0),
           prefixIcon: Icon(
             Icons.search,
-            color: tdBlack,
+            color: Colors.white,
             size: 20,
           ),
           prefixIconConstraints: BoxConstraints(
@@ -190,8 +194,9 @@ class _HomeState extends State<Home> {
           ),
           border: InputBorder.none,
           hintText: 'Search',
-          hintStyle: TextStyle(color: tdGrey),
+          hintStyle: TextStyle(color: Colors.white),
         ),
+        style: const TextStyle(color: Colors.white),
       ),
     );
   }
@@ -203,7 +208,7 @@ class _HomeState extends State<Home> {
       title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         const Icon(
           Icons.menu,
-          color: tdBlack,
+          color: Color(0xff1B1B1D),
           size: 30,
         ),
         SizedBox(
