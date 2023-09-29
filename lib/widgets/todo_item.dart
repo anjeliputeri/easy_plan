@@ -59,7 +59,7 @@ final onDeleteItem;
                 },
               ),
             ),
-      )
+      ),
       );
   }
 }

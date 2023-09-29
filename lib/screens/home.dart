@@ -54,12 +54,13 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                       ),
-                      for (ToDo todoo in _foundToDo.reversed)
+                      for (ToDo todo in _foundToDo.reversed)
                         ToDoItem(
-                          todo: todoo,
+                          todo: todo,
                           onToDoChanged: _handleToDoChange,
                           onDeleteItem: _deleteToDoItem,
                         ),
+                      const SizedBox(height: 100),
                     ],
                   ),
                 )
@@ -146,13 +147,52 @@ class _HomeState extends State<Home> {
   }
 
   void _addToDoItem(String toDo) {
-    setState(() {
-      todosList.add(ToDo(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        todoText: toDo,
-      ));
-    });
-    _todoController.clear();
+    if (toDo.trim().isNotEmpty) {
+      setState(() {
+        todosList.add(ToDo(
+          id: DateTime
+              .now()
+              .microsecondsSinceEpoch
+              .toString(),
+          todoText: toDo,
+        ));
+      });
+      _todoController.clear();
+    } else {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text("No tasks?",
+              textAlign: TextAlign.center,
+              style : TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+              )),
+              content: const Text("Please add a task",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500),
+              ),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Center(
+                    child: Text("OK",
+                    style: TextStyle(
+                      fontSize: 20
+                    ),
+                    ),
+                    ),
+                ),
+              ],
+            );
+          },
+      );
+    }
   }
 
   void _runFilter(String enteredKeyword) {
@@ -205,10 +245,11 @@ class _HomeState extends State<Home> {
     return AppBar(
       backgroundColor: tdBGColor,
       elevation: 0,
+      automaticallyImplyLeading: false,
       title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         const Icon(
           Icons.menu,
-          color: Color(0xff1B1B1D),
+          color: tdGrey,
           size: 30,
         ),
         SizedBox(
